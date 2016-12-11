@@ -103,7 +103,7 @@ def row_decode(crypt_result, alphabet):	#декодируем цифры в за
 	#print(res)
 	return(res)
 
-def anti_key_gen(key, alphabet):	#читаем мультипликативную инверсию матрицы ключа по модулю длины алфавита
+def anti_key_gen(key, alphabet):	#читаем мультипликативную инверсию матрицы ключа по модулю 26
 	det = np.linalg.det(key)
 	key_inv = np.linalg.inv(key)
 	key_plus = key_inv * det
