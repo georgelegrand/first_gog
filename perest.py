@@ -1,7 +1,3 @@
-import numpy as np
-import math
-#from random import randint
-
 '''
 ОТКРЫТЫЙ ТЕКСТ: двойная перестановка
 МАРШРУТ ВПИСЫВАНИЯ: слева - направо
@@ -10,8 +6,13 @@ import math
 СТРОКИ: ( 3, 2, 4, 1, 5)
 '''
 
-def checker():
-	return 1
+def checker(col_set, col_dim):
+	for i in range(1, len(col_set)):
+		if col_set[i] == col_set[i-1]:
+			print("Неправильная последовательность! Введите другую: ")
+			col_set = str(input("Введите новую последовательность от 0 до " + str(col_dim-1) +" включительно (без пробелов): "))
+			checker(col_set, col_dim)
+	return col_set
 
 
 def d_print(x,y):
@@ -93,9 +94,11 @@ def genOrder(msg):
 	print(msg)
 
 	col_set = str(input("Введите порядок столбцов от 0 до " + str(col_dim-1) +" включительно (без пробелов): "))
+	checker(col_set, col_dim)
 	col_ch = setToCh(col_set)
 
 	row_set = str(input("Введите порядок строк от 0 до " + str(row_dim-1) +" включительно (без пробелов): "))
+	checker(row_set, row_dim)
 	row_ch = setToCh(row_set)
 
 	msg_table = strToTable(msg,row_dim,col_dim)
